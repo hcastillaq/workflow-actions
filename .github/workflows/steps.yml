@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: compile
-        run: echo "compile in dev"      
+        run: echo "compile in prod"      
 
   compile_prod:
     if: github.ref == 'refs/heads/dev'
@@ -28,4 +28,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: compile
-        run: echo "compile in prod" 
+        run: echo "compile in dev" 
