@@ -20,9 +20,9 @@ jobs:
     steps:
       - name: compile in prod
         if: github.ref == 'refs/heads/main'
-        run: "compile in prod"
+        run: echo "compile in prod"
       - name: compile in dev
-        run: "compile in dev"
+        run: echo "compile in dev"
 
   test:
     runs-on: ubuntu-latest
