@@ -34,8 +34,6 @@ jobs:
     runs-on: ubuntu-latest
     needs:
       - install
-      - compile_dev
-      - compile_prod
     steps:
       - name: testing
         run: echo "testing"
