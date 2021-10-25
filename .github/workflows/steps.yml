@@ -1,0 +1,29 @@
+name: worflow github actions
+
+on:
+  - main
+  - dev
+
+jobs:
+  install and test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install dependencies
+        run: echo "install packages"
+
+  compile dev:
+    needs: [install and test]
+    runs-on: ubuntu-latest
+    only: dev 
+    steps:
+      - name: compile
+        run: echo "compile in dev"      
+
+  compile prod:
+    needs: [install and test]
+    runs-on: ubuntu-latest
+    only: dev 
+    steps:
+      - name: compile
+        run: echo "compile in prod" 
