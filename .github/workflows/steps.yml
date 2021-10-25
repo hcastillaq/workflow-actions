@@ -2,8 +2,9 @@ name: worflow github actions
 
 on:
   push:
-    - main
-    - dev
+    branches:
+      - main
+      - dev
 
 jobs:
   install:
