@@ -16,15 +16,13 @@ jobs:
 
   compile:
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main'
     needs: [install]
     steps:
-      - name: compile
-        run: echo "compile in prod"
-    if: github.ref == 'refs/heads/dev'
-    steps:
-      - name: compile
-        run: echo "compile in dev"
+      - name: compile in prod
+        if: github.ref == 'refs/heads/main'
+        run: "compile in prod"
+      - name: compile in dev
+        run: "compile in dev"
 
   test:
     runs-on: ubuntu-latest
@@ -40,12 +38,10 @@ jobs:
       - compile
       - test
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main'
     steps:
-      - name: compile
-        run: echo "compile in prod"
-    if: github.ref == 'refs/heads/dev'
-    steps:
-      - name: compile
-        run: echo "compile in dev"
+      - name: deploy in prod
+        if: github.ref == 'refs/heads/main'
+        run: "deploy in prod"
+      - name: deploy in dev
+        run: "deploy in dev"
 
