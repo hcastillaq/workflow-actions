@@ -14,18 +14,14 @@ jobs:
       - name: Install dependencies
         run: echo "install packages"
 
-  compile_dev:
+  compile:
+    runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
     needs: [install]
-    runs-on: ubuntu-latest
     steps:
       - name: compile
         run: echo "compile in prod"
-
-  compile_prod:
     if: github.ref == 'refs/heads/dev'
-    needs: [install]
-    runs-on: ubuntu-latest
     steps:
       - name: compile
         run: echo "compile in dev"
@@ -37,3 +33,19 @@ jobs:
     steps:
       - name: testing
         run: echo "testing"
+
+  deploy:
+    needs: 
+      - install
+      - compile
+      - test
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - name: compile
+        run: echo "compile in prod"
+    if: github.ref == 'refs/heads/dev'
+    steps:
+      - name: compile
+        run: echo "compile in dev"
+
