@@ -41,7 +41,7 @@ jobs:
     steps:
       - name: deploy in prod
         if: github.ref == 'refs/heads/main'
-        run: "deploy in prod"
+        run: echo "deploy in prod"
       - name: deploy in dev
-        run: "deploy in dev"
+        run: echo "deploy in dev"
 
