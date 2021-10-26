@@ -9,8 +9,8 @@ jobs:
   install_and_test:
     runs-on: ubuntu-latest
     steps:
-      uses: actions/checkout@v2
-      uses: actions/setup-node@v2
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
       with:
         node_version: "14"
         cache: 'npm'
@@ -22,8 +22,8 @@ jobs:
     needs: [install_and_test]
     runs-on: ubuntu-latest
     steps:
-      uses: actions/checkout@v2
-      uses: actions/setup-node@v2
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
       with:
         node_version: "14"
         cache: 'npm'
