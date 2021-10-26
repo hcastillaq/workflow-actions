@@ -1,7 +1,7 @@
 function App() {
   return (
     <center>
-      <h1>Good life people !!!</h1>
+      <h1>One Job !!!</h1>
     </center>
   );
 }
