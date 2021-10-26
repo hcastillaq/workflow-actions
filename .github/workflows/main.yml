@@ -9,16 +9,19 @@ jobs:
   install_and_test:
     runs-on: ubuntu-latest
     steps:
-      run: echo "install and test"
+      - name: install and test
+        run: echo "install and test"
 
   build:
     needs: [install_and_test]
     runs-on: ubuntu-latest
     steps:
-      run: echo "build"
+      - name: build
+        run: echo "build"
 
   deploy:
     needs: [install_and_test]
     runs-on: ubuntu-latest
     steps:
-      run: echo "deploy"
+      - name: deploy
+        run: echo "deploy"
