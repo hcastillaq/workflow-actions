@@ -47,5 +47,5 @@ jobs:
           name: app
       - name: install firebase cli
         run: npm install -g firebase-tools
-      - name: dowload artifact app
+      - name: deploy
         run: firebase deploy --token ${{ secrets.TOKEN }}
