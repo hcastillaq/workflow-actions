@@ -13,10 +13,10 @@ jobs:
         with:
           node-version: "14"
       - name: "install"
-        run: npm install
-      - name: "build"
         run: npm run build
       - name: "test"
+        run: npm install
+      - name: "build"
         run: npm run test
       - name: "deploy"
         run: |
