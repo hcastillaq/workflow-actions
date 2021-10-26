@@ -9,15 +9,32 @@ jobs:
   install_and_test:
     runs-on: ubuntu-latest
     steps:
-      - name: install and test
-        run: echo "install and test"
+      uses: actions/checkout@v2
+      uses: actions/setup-node@v2
+      with:
+        node_version: "14"
+        cache: 'npm'
+      - run: npm install
+      - run: npm test
+        
 
   build:
     needs: [install_and_test]
     runs-on: ubuntu-latest
     steps:
-      - name: build
-        run: echo "build"
+      uses: actions/checkout@v2
+      uses: actions/setup-node@v2
+      with:
+        node_version: "14"
+        cache: 'npm'
+      - run: npm install  
+      - run: npm run build
+      - run: rm -r node_modules
+      - name: artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: app
+          path: .
 
   deploy:
     needs: [build]
