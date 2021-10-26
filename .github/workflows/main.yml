@@ -8,14 +8,17 @@ on:
 jobs:
   install_and_test:
     runs-on: ubuntu-latest
-    run: echo "install and test"
+    steps:
+      run: echo "install and test"
 
   build:
     needs: [install_and_test]
     runs-on: ubuntu-latest
-    run: echo "build"
+    steps:
+      run: echo "build"
 
   deploy:
     needs: [install_and_test]
     runs-on: ubuntu-latest
-    run: echo "deploy"
+    steps:
+      run: echo "deploy"
