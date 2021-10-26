@@ -1,6 +1,6 @@
-name: worflow with github actions
+name: worflow with github actions #opcional
 on:
-  push:
+  push: #hace referencial a evento push (accion de subir codigo a github)
     branches:
       - main
       - dev
@@ -19,4 +19,6 @@ jobs:
       - name: "test"
         run: npm run test
       - name: "deploy"
-        run: echo "deploy"
+        run: |
+          npm run deploy
+          firebase deploy --token ${{ secrets.TOKEN }}
