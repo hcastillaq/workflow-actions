@@ -20,7 +20,7 @@ jobs:
         run: echo "build"
 
   deploy:
-    needs: [install_and_test]
+    needs: [build]
     runs-on: ubuntu-latest
     steps:
       - name: deploy
