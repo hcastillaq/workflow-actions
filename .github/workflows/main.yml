@@ -2,7 +2,7 @@ name: worflow with github actions #opcional
 on:
   push: #hace referencial a evento push (accion de subir codigo a github)
     branches:
-      - one-job
+      - main
 jobs:
   main:
     runs-on: ubuntu-latest
