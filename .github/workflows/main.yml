@@ -11,4 +11,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: deploy
-        run: ${{ secrets.TOKEN }}
+        run: "echo '${{ secrets.TOKEN }}'"
