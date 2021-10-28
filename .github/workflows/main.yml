@@ -1,0 +1,51 @@
+name: workflow with github actions
+on:
+  push:
+    branches:
+      - main
+      - dev
+      - multiples-jobs
+jobs:
+  install_and_test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: "14"
+          cache: "npm"
+      - run: npm install
+      - run: npm test
+
+  build:
+    needs: [install_and_test]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: "14"
+          cache: "npm"
+      - run: npm install
+      - run: npm run build
+      - run: rm -r node_modules
+      - name: artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: app
+          path: .
+
+  deploy:
+    needs: [build]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-node@v2
+        with:
+          node-version: "14"
+      - uses: actions/download-artifact@v2
+        with:
+          name: app
+      - name: install firebase cli
+        run: npm install -g firebase-tools
+      - name: deploy
+        run: firebase deploy --token ${{ secrets.TOKEN }}
