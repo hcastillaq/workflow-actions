@@ -1,6 +1,6 @@
-name: worflow with github actions #opcional
+name: workflow with github actions
 on:
-  push: #hace referencial a evento push (accion de subir codigo a github)
+  push:
     branches:
       - main
       - dev
